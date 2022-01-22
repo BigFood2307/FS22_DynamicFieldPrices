@@ -28,10 +28,10 @@ To stop you from field flipping, a 10% extra is added when buying and substracte
 ### Formula for the Price:
 
 The Base Price of land is calculated according to the map baselines:
-baseprice = size*price_per_hectar*field_factor
+baseprice = size x price_per_hectar x field_factor
 This will produce the same price as in the base game
 It is then altered:
-actual_price = baseprice*greediness*economic*discouragement
+actual_price = baseprice x greediness x economic x discouragement
 
 ### Difficulty
 

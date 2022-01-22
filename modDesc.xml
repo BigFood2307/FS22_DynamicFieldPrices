@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="62">
+<modDesc descVersion="64">
     <author>BigFood2307</author>
     <version>1.0.0.0</version>
 
@@ -10,25 +10,29 @@
 
     <description>
         <en>
-           Makes Field prices more interesting. It might make sense to look out for good deals instead of always buying the closest land.
-		   Some NPCs are more greedy than others and their economic situation changes over time influencing the prices as well.
-		   An extra 10% is added when buying or selling a field. This will strongly limit field flipping.
-		   Prices change once per day.
-		   
-		   For more detailed information check out the project on github. (BigFood2307/FS22_DynamicFieldPrices)
+			<![CDATA[
+Makes Field prices more interesting. It might make sense to look out for good deals instead of always buying the closest land.
+Some NPCs are more greedy than others and their economic situation changes over time influencing the prices as well.
+An extra 10% is added when buying or selling a field. This will strongly limit field flipping.
+Prices change once per day.
+
+For more detailed information check out the project on github. (BigFood2307/FS22_DynamicFieldPrices)
+]]>
         </en>
 		<de>
-			Feldpreise werden interessanter gestaltet. Möglicherweise macht es mehr Sinn, nach einem guten Deal zu suchen, statt immer das benachbarte Land zu kaufen.
-			Manche NPCs sind gieriger als andere. Außerdem ändert sich ihre finanzielle Situation, was den Preis mit der Zeit ebenfalls verändert.
-			Eine Provision von 10% wird bei jedem Kauf/Verkauf angerechnet. Field Flipping word dadurch stark ausgebremst.
-			Preise ändern sich einmal am Tag.
-			
-			Detailiertere Informationen sind im Github Projekt zu finden. (BigFood2307/FS22_DynamicFieldPrices)
+			<![CDATA[
+Feldpreise werden interessanter gestaltet. Möglicherweise macht es mehr Sinn, nach einem guten Deal zu suchen, statt immer das benachbarte Land zu kaufen.
+Manche NPCs sind gieriger als andere. Außerdem ändert sich ihre finanzielle Situation, was den Preis mit der Zeit ebenfalls verändert.
+Eine Provision von 10% wird bei jedem Kauf/Verkauf angerechnet. Field Flipping wird dadurch stark ausgebremst.
+Preise ändern sich einmal am Tag.
+
+Detailiertere Informationen sind im Github Projekt zu finden. (BigFood2307/FS22_DynamicFieldPrices)
+]]>
 		</de>
 	</description>
         
     <iconFilename>icon.png</iconFilename>
-    <multiplayer supported="false"/>
+    <multiplayer supported="true"/>
 
     <extraSourceFiles>
         <sourceFile filename="DynamicFieldPrices.lua"/>

@@ -22,20 +22,20 @@ Each economic situation factor is a number between 0.7 and 1.5 for each NPC. It 
 
 ### Buy/Sell discouragement
 
-To stop you from field flipping, a 10% extra is added when buying and substracted when selling a field.
+To stop you from field flipping, a 10% extra is added when buying and substracted when selling a field.  
 -> The factor is 1.1 for buying and 0.9 for selling.
 
 ### Formula for the Price:
 
 The Base Price of land is calculated according to the map baselines:
-baseprice = size x price_per_hectar x field_factor
-This will produce the same price as in the base game
-It is then altered:
+baseprice = size x price_per_hectar x field_factor  
+This will produce the same price as in the base game.  
+It is then altered:  
 actual_price = baseprice x greediness x economic x discouragement
 
 ### Difficulty
 
-On average fields are now 33% more expensive to buy. However with some luck you can also find certain fields at almost have the original price.
+On average fields are now 33% more expensive to buy. However with some luck you can also find certain fields at almost half the original price.
 
 ## Possible future ideas
 

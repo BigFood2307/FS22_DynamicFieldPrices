@@ -193,9 +193,13 @@ end
 
 function DynamicFieldPrices:buildFarmlandsMapOverlay(selectedFarmland)
     if selectedFarmland then
-		local mult = selectedFarmland.price/(selectedFarmland.areaInHa*g_farmlandManager.pricePerHa*selectedFarmland.priceFactor)
-        local difference = string.format("%.2f %%", (mult-1)*100)
-		if mult > 1 then
+		local baseprice = selectedFarmland.areaInHa*g_farmlandManager.pricePerHa*selectedFarmland.priceFactor
+		local mult = 1
+		if not baseprice == 0 then
+			mult = selectedFarmland.price/baseprice
+		end		
+        local difference = string.format("%.1f %%", (mult-1)*100)
+		if mult => 1 then
 			difference = "+" .. difference
 		end
         self.selectedFarmlandDifference = difference

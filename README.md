@@ -10,20 +10,26 @@ Prices change once per day.
 
 The game gives each field to one NPC. This mod gives each of them a permanent greediness factor and a changing factor for their economic situation.
 These factors are different for each savegame but stored inbetween sessions.
-Since the game never changes the connection between field and NPC, you will always buy/sell a certain field from/to the same person.
+Since the game never changes the connection between field and NPC, you will always buy/sell a certain field from/to the same person.  
+To completely regenerate the NPCs, open dynamicFieldPrices.xml in your savegame and delete all <npc ... /> entries.  
+You can also delete single entries here to only regenerate those NPCs.  
+It is best to do this while in the main menu to avoid steam cloud overwrites etc.
 
 ###  Greediness
 
-The greediness factor is a number between 0.7 and 1.5 for each NPC. It will never change, unless the dynamicFieldPrices.xml file in the samvegame is deleted.
+The greediness factor is a number between 0.8 and 1.2 for each NPC. It will never change, unless the dynamicFieldPrices.xml file in the samvegame is deleted.  
+Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame
 
 ### Economic situation
 
-Each economic situation factor is a number between 0.7 and 1.5 for each NPC. It is randomly initiated once and will change daily by a small random amount.
+Each economic situation factor is a number between 0.6 and 1.6 for each NPC. It is randomly initiated once and will change daily by a small random amount.
+Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame
 
 ### Buy/Sell discouragement
 
 To stop you from field flipping, a 10% extra is added when buying and substracted when selling a field.  
--> The factor is 1.1 for buying and 0.9 for selling.
+-> The factor is 1.1 for buying and 0.9 for selling.  
+This value can also be changed in the dynamicFieldPrices.xml in your savegame.
 
 ### Formula for the Price:
 
@@ -35,7 +41,7 @@ actual_price = baseprice x greediness x economic x discouragement
 
 ### Difficulty
 
-On average fields are now 33% more expensive to buy. However with some luck you can also find certain fields at almost half the original price.
+On average fields are now 21% more expensive to buy. However with some luck you can also find certain fields at almost half the original price.
 
 ## Possible future ideas
 

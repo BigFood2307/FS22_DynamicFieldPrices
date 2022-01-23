@@ -22,9 +22,9 @@ function DFPPricesChangedEvent:new(dfp, prices)
 end
 
 function DFPPricesChangedEvent:writeStream(streamId, connection)
-	print(#prices)
-	streamWriteInt32(#prices)
-	for i, p in pairs(prices) do
+	print(#self.prices)
+	streamWriteInt32(streamId, #self.prices)
+	for i, p in pairs(self.prices) do
 		streamWriteFloat32(streamId, p)
 	end
 end
@@ -40,10 +40,7 @@ function DFPPricesChangedEvent:readStream(streamId, connection)
 end
 
 function DFPPricesChangedEvent:run(connection)
-	print("Test0")
-	print(connection:getIsServer())
-    if not connection:getIsServer() then
-		print("Test")
+    if connection:getIsServer() then
         g_dynamicFieldPrices:onNewPricesReceived(self.prices)
 	end
 end

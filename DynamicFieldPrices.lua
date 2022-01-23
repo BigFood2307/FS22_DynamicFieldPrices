@@ -205,29 +205,6 @@ end
 function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
     if self.mapOverlayGenerator.selectedFarmlandDifference then
 		self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
-        --if self.areaText == nil then
-        --    local areaLabel = self.farmlandValueText:clone(self)
-        --    areaLabel:setPosition(0, 0.04)
-        --    self.farmlandValueText.parent:addElement(areaLabel)
-        --    areaLabel:setText("Difference")
-        --    areaLabel:setTextColor(1, 1, 1, 1)
-        --    self.areaLabel = areaLabel
-        --    local areaText = self.farmlandValueText:clone(self)
-        --    areaText:setPosition(0.09, 0.04)
-        --    self.farmlandValueText.parent:addElement(areaText)
-        --    areaText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
-        --    self.areaText = areaText
-        --else
-        --    local areaText = self.areaText
-        --    areaText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
-        --end
-    --else
-    --    if self.areaText then
-    --        self:removeElement(self.areaText)
-    --    end
-    --    if self.areaLabel then
-    --        self:removeElement(self.areaLabel)
-    --    end
     end
 end
 

@@ -16,13 +16,11 @@ function DFPPricesChangedEvent:new(dfp, prices)
 
 	self.dfp = dfp
     self.prices = prices
-	print_r(prices)
 
     return self
 end
 
 function DFPPricesChangedEvent:writeStream(streamId, connection)
-	print(#self.prices)
 	streamWriteInt32(streamId, #self.prices)
 	for i, p in pairs(self.prices) do
 		streamWriteFloat32(streamId, p)
@@ -31,7 +29,6 @@ end
 
 function DFPPricesChangedEvent:readStream(streamId, connection)
     local nPrices = streamReadInt32(streamId)
-	print(nPrices)
 	for i = 1, nPrices, 1 do
 		self.prices[i] = streamReadFloat32(streamId)
 	end

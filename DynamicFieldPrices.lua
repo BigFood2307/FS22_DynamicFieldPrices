@@ -1,8 +1,9 @@
-
 local directory = g_currentModDirectory
 local modName = g_currentModName
 
-local dynamicFieldPrices = nil
+source(Utils.getFilename("DFPPricesChangedEvent.lua", directory))
+
+g_dynamicFieldPrices = nil
 
 DynamicFieldPrices = {}
 
@@ -28,9 +29,19 @@ function DynamicFieldPrices:delete()
 	self.messageCenter:unsubscribeAll(self)
 end
 
+function DynamicFieldPrices:onNewPricesReceived(prices)
+	if not self.isServer then
+		fls = self.farmlandManager.farmlands
+		for fidx, field in pairs(fls) do
+			field.price = prices[fidx]
+		end	
+	end
+end
+
 function DynamicFieldPrices:calcPrice()
 	pph = self.farmlandManager.pricePerHa
 	fls = self.farmlandManager.farmlands
+	local prices = {}
 	for fidx, field in pairs(fls) do
 		local newPrice = field.areaInHa * pph * field.priceFactor
 		local npcIdx = field.npcIndex
@@ -46,7 +57,10 @@ function DynamicFieldPrices:calcPrice()
 		end
 		newPrice = newPrice*sellFactor
 		field.price = newPrice
+		prices[fidx] = newPrice
 	end
+	
+	g_server:broadcastEvent(DFPPricesChangedEvent:new(self, prices))
 end
 
 function DynamicFieldPrices:createRandomNPC(i)
@@ -108,7 +122,7 @@ function saveToXMLFile(missionInfo)
     if missionInfo.isValid then
         local xmlFile = XMLFile.create("DynamicFieldPricesXML", missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml", "dynamicFieldPrices")
         if xmlFile ~= nil then
-            dynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
+            g_dynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
             xmlFile:save()
             xmlFile:delete()
         end
@@ -119,7 +133,7 @@ function loadedMission(mission, node)
 	if mission.missionInfo.savegameDirectory ~= nil and fileExists(mission.missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml") then
 		local xmlFile = XMLFile.load("DynamicFieldPricesXML", mission.missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml")
 		if xmlFile ~= nil then
-			dynamicFieldPrices:onMissionLoadFromSavegame(xmlFile)
+			g_dynamicFieldPrices:onMissionLoadFromSavegame(xmlFile)
 			xmlFile:delete()
 		end
 	end
@@ -130,11 +144,11 @@ function loadedMission(mission, node)
 end
 
 function load(mission)
-	dynamicFieldPrices = DynamicFieldPrices:new(mission, g_messageCenter, g_farmlandManager)
+	g_dynamicFieldPrices = DynamicFieldPrices:new(mission, g_messageCenter, g_farmlandManager)
 end
 
 function startMission(mission)
-	dynamicFieldPrices:onStartMission(mission)
+	g_dynamicFieldPrices:onStartMission(mission)
 end
 
 addModEventListener(DynamicFieldPrices)

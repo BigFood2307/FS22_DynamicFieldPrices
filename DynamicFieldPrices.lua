@@ -64,7 +64,12 @@ function DynamicFieldPrices:calcPrice()
 	fls = self.farmlandManager.farmlands
 	local prices = {}
 	for fidx, field in pairs(fls) do
-		local newPrice = field.areaInHa * pph * field.priceFactor
+		local newPrice = 0
+		if field.fixedPrice ~= nil then
+			newPrice = field.fixedPrice
+		else
+			newPrice = field.areaInHa * pph * field.priceFactor
+		end
 		local npcIdx = field.npcIndex
 		if self.npcs[npcIdx] == nil then
 			self:createRandomNPC(npcIdx)

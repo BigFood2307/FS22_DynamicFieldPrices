@@ -33,6 +33,7 @@ end
 
 function DynamicFieldPrices:delete()
 	self.messageCenter:unsubscribeAll(self)
+	farmlandManager:removeStateChangeListener(self)
 end
 
 function DynamicFieldPrices:onWriteStream(streamId, connection)
@@ -195,14 +196,15 @@ function DynamicFieldPrices:buildFarmlandsMapOverlay(selectedFarmland)
     if selectedFarmland then
 		local baseprice = selectedFarmland.areaInHa*g_farmlandManager.pricePerHa*selectedFarmland.priceFactor
 		local mult = 1
-		if not baseprice == 0 then
+		if baseprice ~= 0 then
 			mult = selectedFarmland.price/baseprice
 		end		
         local difference = string.format("%.1f %%", (mult-1)*100)
-		if mult => 1 then
+		if mult >= 1 then
 			difference = "+" .. difference
 		end
         self.selectedFarmlandDifference = difference
+		print(difference)
     end
 end
 
@@ -219,5 +221,5 @@ Mission00.load = Utils.appendedFunction(Mission00.load, load)
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, loadedMission)
 Mission00.onStartMission = Utils.appendedFunction(Mission00.onStartMission, startMission)
 MapOverlayGenerator.buildFarmlandsMapOverlay = Utils.appendedFunction(MapOverlayGenerator.buildFarmlandsMapOverlay, DynamicFieldPrices.buildFarmlandsMapOverlay)
-InGameMenuMapFrame.onFarmlandOverlayFinished = Utils.prependedFunction(InGameMenuMapFrame.onFarmlandOverlayFinished, DynamicFieldPrices.onFarmlandOverlayFinished)
+InGameMenuMapFrame.onFarmlandOverlayFinished = Utils.appendedFunction(InGameMenuMapFrame.onFarmlandOverlayFinished, DynamicFieldPrices.onFarmlandOverlayFinished)
 

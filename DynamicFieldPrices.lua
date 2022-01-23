@@ -208,9 +208,48 @@ function DynamicFieldPrices:buildFarmlandsMapOverlay(selectedFarmland)
     end
 end
 
+-- temporary workaround, since adding directly to farmlandValueText only works on vanilla maps
 function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
     if self.mapOverlayGenerator.selectedFarmlandDifference then
-		self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
+		--self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
+		if self.diffText == nil then
+			local diffLabel = self.farmlandValueText:clone(self)
+			self.farmlandValueText.parent:addElement(diffLabel)
+			-- diffLabel:setBold(false)
+			diffLabel:setText("Difference")
+			diffLabel:applyProfile("ingameMenuMapMoneyLabel")
+			diffLabel:setTextColor(1, 1, 1, 1)
+			self.diffLabel = diffLabel
+			local diffText = self.farmlandValueText:clone(self)
+			self.farmlandValueText.parent:addElement(diffText)
+			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
+			diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEUTRAL)
+			self.diffText = diffText
+			-- diffLabel:setTextColor(1, 1, 1, 1)
+			diffText:setPosition(0.06, 0.04)
+			diffLabel:setPosition(0, 0.04)
+			-- local selfX, selfY = diffLabel:getPosition()
+			-- print(string.format("Label x: %s, y: %s", selfX, selfY))
+			-- local selfX, selfY = diffText:getPosition()
+			-- print(string.format("Text  x: %s, y: %s", selfX, selfY))
+		else
+			local diffText = self.diffText
+			local diffLabel = self.diffLabel
+			diffText:setVisible(false)
+			diffLabel:setVisible(false)
+			diffText:setPosition(0.06, 0.04)
+			diffLabel:setPosition(0, 0.04)
+			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
+			diffText:setVisible(true)
+			diffLabel:setVisible(true)
+		end
+	else
+		if self.diffText then
+			self:removeElement(self.diffText)
+		end
+		if self.diffLabel then
+			self:removeElement(self.diffLabel)
+		end
     end
 end
 

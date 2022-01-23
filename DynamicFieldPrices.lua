@@ -204,7 +204,6 @@ function DynamicFieldPrices:buildFarmlandsMapOverlay(selectedFarmland)
 			difference = "+" .. difference
 		end
         self.selectedFarmlandDifference = difference
-		print(difference)
     end
 end
 

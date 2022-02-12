@@ -223,14 +223,18 @@ end
 -- temporary workaround, since adding directly to farmlandValueText only works on vanilla maps
 function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
     if self.mapOverlayGenerator.selectedFarmlandDifference then
+		local compat_offset = 0
+		if self.areaText ~= nil then
+			compat_offset = 0.1
+		end
 		--self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
 		if self.diffText == nil then
 			local diffLabel = self.farmlandValueText:clone(self)
 			self.farmlandValueText.parent:addElement(diffLabel)
-			-- diffLabel:setBold(false)
-			diffLabel:setText("Difference")
+			--diffLabel:setBold(false)
+			diffLabel:setText(g_i18n:getText("display_dfp_difference")..":")
 			diffLabel:applyProfile("ingameMenuMapMoneyLabel")
-			diffLabel:setTextColor(1, 1, 1, 1)
+			--diffLabel:setTextColor(1, 1, 1, 1)
 			self.diffLabel = diffLabel
 			local diffText = self.farmlandValueText:clone(self)
 			self.farmlandValueText.parent:addElement(diffText)
@@ -241,20 +245,16 @@ function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
 			end
 			self.diffText = diffText
 			-- diffLabel:setTextColor(1, 1, 1, 1)
-			diffText:setPosition(0.06, 0.04)
-			diffLabel:setPosition(0, 0.04)
+			diffText:setPosition(0.06+compat_offset, 0.04)
+			diffLabel:setPosition(0.0+compat_offset, 0.04)
 			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
-			-- local selfX, selfY = diffLabel:getPosition()
-			-- print(string.format("Label x: %s, y: %s", selfX, selfY))
-			-- local selfX, selfY = diffText:getPosition()
-			-- print(string.format("Text  x: %s, y: %s", selfX, selfY))
 		else
 			local diffText = self.diffText
 			local diffLabel = self.diffLabel
 			diffText:setVisible(false)
 			diffLabel:setVisible(false)
-			diffText:setPosition(0.06, 0.04)
-			diffLabel:setPosition(0, 0.04)
+			diffText:setPosition(0.06+compat_offset, 0.04)
+			diffLabel:setPosition(0.0+compat_offset, 0.04)
 			if string.sub(self.mapOverlayGenerator.selectedFarmlandDifference,1,1)=="+" then
 				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)
 			else			

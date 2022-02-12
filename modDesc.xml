@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>BigFood2307</author>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
 
     <title>
         <en>Dynamic Field Prices</en>
@@ -19,6 +19,10 @@ Prices change once per day. The difference to the base price in percent is shown
 For more detailed information check out the project on github. (BigFood2307/FS22_DynamicFieldPrices)
 
 Thanks to yumi (Additional Field Info) for showing a way to show more information in the map screen.
+
+Changelog:
+- v1.0.0.1: * Moved display in map view to make it compatible with Additional field info.
+			* Uses i18n for display
 ]]>
         </en>
 		<de>
@@ -30,11 +34,17 @@ Preise ändern sich einmal am Tag. Der Unterschied zum Grundpreis in Prozent wir
 
 Detailiertere Informationen sind im Github Projekt zu finden. (BigFood2307/FS22_DynamicFieldPrices)
 
-Danke an yumi (Additional Field Info) für das Aufzeigen einr Methode um weitere Informationen in der Karte anzuzeigen.
+Danke an yumi (Additional Field Info) für das Aufzeigen einer Methode um weitere Informationen in der Karte anzuzeigen.
+
+Changelog:
+- v1.0.0.1: * Anzeige im Map View verschoben für Kompatibilität mit Additional field info.
+			* Nutzt i18n in der Anzeige
 ]]>
 		</de>
 	</description>
         
+	<l10n filenamePrefix="i18n/locale"/>
+		
     <iconFilename>icon.png</iconFilename>
     <multiplayer supported="true"/>
 

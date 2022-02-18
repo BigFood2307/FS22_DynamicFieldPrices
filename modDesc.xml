@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>BigFood2307</author>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
 
     <title>
         <en>Dynamic Field Prices</en>
@@ -16,13 +16,17 @@ Some NPCs are more greedy than others and their economic situation changes over 
 An extra 10% is added when buying or selling a field. This will strongly limit field flipping.
 Prices change once per day. The difference to the base price in percent is shown when buying land.
 
-For more detailed information check out the project on github. (BigFood2307/FS22_DynamicFieldPrices)
+For more detailed information check out the project on github. (Google FS22_DynamicFieldPrices)
 
-Thanks to yumi (Additional Field Info) for showing a way to show more information in the map screen.
+Thanks to the Additional Field Info mod for showing a way to display more information in the map screen.
 
 Changelog:
-- v1.0.0.1: * Moved display in map view to make it compatible with Additional field info.
-			* Uses i18n for display
+- v1.0.0.1:
+* Moved display in map view to make it compatible with Additional field info.
+* Uses i18n for display
+- v1.0.0.2:
+* Adjusted mod description
+* New icon
 ]]>
         </en>
 		<de>
@@ -32,13 +36,17 @@ Manche NPCs sind gieriger als andere. Außerdem ändert sich ihre finanzielle Si
 Eine Provision von 10% wird bei jedem Kauf/Verkauf angerechnet. Field Flipping wird dadurch stark ausgebremst.
 Preise ändern sich einmal am Tag. Der Unterschied zum Grundpreis in Prozent wird beim Landkauf angezeigt.
 
-Detailiertere Informationen sind im Github Projekt zu finden. (BigFood2307/FS22_DynamicFieldPrices)
+Detailiertere Informationen sind im Github Projekt zu finden. (Google FS22_DynamicFieldPrices)
 
-Danke an yumi (Additional Field Info) für das Aufzeigen einer Methode um weitere Informationen in der Karte anzuzeigen.
+Danke an den Additional Field Infos Mod für das Aufzeigen einer Methode um weitere Informationen in der Karte anzuzeigen.
 
 Changelog:
-- v1.0.0.1: * Anzeige im Map View verschoben für Kompatibilität mit Additional field info.
-			* Nutzt i18n in der Anzeige
+- v1.0.0.1:
+* Anzeige im Map View verschoben für Kompatibilität mit Additional field info.
+* Nutzt i18n in der Anzeige
+- v1.0.0.2:
+* Mod Beschreibung angepasst
+* Neues Icon
 ]]>
 		</de>
 	</description>

@@ -225,7 +225,7 @@ function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
     if self.mapOverlayGenerator.selectedFarmlandDifference then
 		local compat_offset = 0
 		if self.areaText ~= nil then
-			compat_offset = 0.1
+			compat_offset = 0.12
 		end
 		--self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
 		if self.diffText == nil then
@@ -245,7 +245,7 @@ function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
 			end
 			self.diffText = diffText
 			-- diffLabel:setTextColor(1, 1, 1, 1)
-			diffText:setPosition(0.06+compat_offset, 0.04)
+			diffText:setPosition(0.08+compat_offset, 0.04)
 			diffLabel:setPosition(0.0+compat_offset, 0.04)
 			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
 		else
@@ -253,7 +253,7 @@ function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
 			local diffLabel = self.diffLabel
 			diffText:setVisible(false)
 			diffLabel:setVisible(false)
-			diffText:setPosition(0.06+compat_offset, 0.04)
+			diffText:setPosition(0.08+compat_offset, 0.04)
 			diffLabel:setPosition(0.0+compat_offset, 0.04)
 			if string.sub(self.mapOverlayGenerator.selectedFarmlandDifference,1,1)=="+" then
 				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)

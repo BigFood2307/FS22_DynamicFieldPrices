@@ -27,6 +27,8 @@ Changelog:
 - v1.0.0.2:
 * Adjusted mod description
 * New icon
+- v1.0.0.3
+* Moved display to the right slightly to adjust for longer words in german
 ]]>
         </en>
 		<de>
@@ -47,6 +49,8 @@ Changelog:
 - v1.0.0.2:
 * Mod Beschreibung angepasst
 * Neues Icon
+- v1.0.0.3
+* Anzeige leicht nach rechts verschoben om längere deutsch Worte zu unterstützen.
 ]]>
 		</de>
 	</description>

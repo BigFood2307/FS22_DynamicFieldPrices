@@ -5,6 +5,8 @@ Some NPCs are more greedy than others and their economic situation changes over 
 An extra 10% is added when buying or selling a field. This will strongly limit field flipping.
 Prices change once per day.
 
+IF YOU RUN INTO ISSUES AFTER SAVING/LOADING ON MOD MAPS CHECK THIS ISSUE: https://github.com/BigFood2307/FS22_DynamicFieldPrices/issues/4
+
 ## Price calculation
 ### NPCs
 

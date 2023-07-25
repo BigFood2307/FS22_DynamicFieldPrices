@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>BigFood2307</author>
-    <version>1.0.0.2</version>
+    <version>1.0.0.4</version>
 
     <title>
         <en>Dynamic Field Prices</en>
@@ -29,6 +29,8 @@ Changelog:
 * New icon
 - v1.0.0.3
 * Moved display to the right slightly to adjust for longer words in german
+- v1.0.0.4
+* added pt/br translation
 ]]>
         </en>
 		<de>
@@ -51,6 +53,8 @@ Changelog:
 * Neues Icon
 - v1.0.0.3
 * Anzeige leicht nach rechts verschoben om längere deutsch Worte zu unterstützen.
+- v1.0.0.4
+* pt/br Übersetzung hinzugefügt
 ]]>
 		</de>
 	</description>

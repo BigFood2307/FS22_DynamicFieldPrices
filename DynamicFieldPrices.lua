@@ -199,7 +199,6 @@ end
 
 function startMission(mission)
 	g_dynamicFieldPrices:onStartMission(mission)
-	print("Test 1234")
 end
 
 function readStream(e, streamId, connection)

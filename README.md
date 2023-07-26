@@ -45,6 +45,10 @@ actual_price = baseprice x greediness x economic x discouragement
 
 On average fields are now 21% more expensive to buy. However with some luck you can also find certain fields at almost half the original price.
 
+## Compatibility
+
+Compatible with FS22_BetterContracts. The displayed value is the combined discount from both mods (if BCs discounted fields option is enabled). Price factors from both mods are multiplicative (-10% DFP, -10% BC -> -19%).
+
 ## Possible future ideas
 
 - Changing greediness by fulfilling/canceling contracts (or adding a extra factor for it)

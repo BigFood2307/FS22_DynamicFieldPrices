@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>BigFood2307</author>
-    <version>1.0.1.0</version>
+    <version>1.0.1.1</version>
 
     <title>
         <en>Dynamic Field Prices</en>
@@ -25,6 +25,10 @@ Changelog:
 - v1.0.1.0
 * Changed price difference diplay to be more streamlined and work better with modmaps
 * Thanks to BetterContracts for the inspiration
+- v1.0.1.1
+* Added compatibility for BetterContracts
+* Displays and price factors are merged
+* Discounts are multiplicative (-10% DFP, -10% BC -> -19%)
 -
 ]]>
         </en>
@@ -44,6 +48,10 @@ Changelog:
 - v1.0.1.0
 * Preisunterschied wird nun direkt hinter dem Preis angezeigt. Bessere Kompatibilität mit Modmaps
 * Danke an BetterContracts für die Inspiration!
+- v1.0.1.1
+* Kompatibiltät mit BetterContracts
+* Anzeige und Preisfaktor zusammengeführt
+* Faktoren sind multiplikativ (-10% DFP, -10% BC -> -19%)
 ]]>
 		</de>
 	</description>

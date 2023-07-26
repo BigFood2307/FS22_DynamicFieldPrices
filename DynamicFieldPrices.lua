@@ -195,6 +195,7 @@ end
 
 function load(mission)
 	g_dynamicFieldPrices = DynamicFieldPrices:new(mission, g_messageCenter, g_farmlandManager)
+	InGameMenuMapFrame.onClickMap = Utils.appendedFunction(InGameMenuMapFrame.onClickMap, onClickFarmland)
 end
 
 function startMission(mission)
@@ -220,24 +221,40 @@ function onClickFarmland(self, elem, X, Z)
 	if farmland == nil or not farmland.showOnFarmlandsScreen
 		then return 
 	end
+			
+	local bcFactor = 1
+	
+	if g_modIsLoaded["FS22_BetterContracts"] then
+		
+		local preText = self.farmlandValueText:getText()
+	
+		local difStartIndex = string.find(preText, "%( -")
+		local difEndIndex = string.find(preText, "%%%)")
+		
+		if difStartIndex ~= nil and difEndIndex ~= nil then
+			local difStr = string.sub(preText, difStartIndex+3, difEndIndex-1)
+			bcFactor = (100-tonumber(difStr))/100.0
+		end
+	end
 	
 	local baseprice = farmland.areaInHa*g_farmlandManager.pricePerHa*farmland.priceFactor
 	local mult = 1
+	local finalPrice = farmland.price*bcFactor
 	if baseprice ~= 0 then
-		mult = farmland.price/baseprice
+		mult = finalPrice/baseprice
 	end		
 	local difference = string.format("%.1f %%", (mult-1)*100)
 	if mult >= 1 then
 		difference = "+" .. difference
 	end
-	selectedFarmlandDifference = " (" .. difference .. ")"
+	selectedFarmlandDifference = " ( " .. difference .. ")"
 	
 	if mult >= 1 then
 		self.farmlandValueText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)
 	else			
 		self.farmlandValueText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEUTRAL)
 	end	
-	self.farmlandValueText:setText(self.farmlandValueText:getText()..selectedFarmlandDifference)
+	self.farmlandValueText:setText(g_i18n:formatMoney(finalPrice, 0, true, true)..selectedFarmlandDifference)
 
 	self.farmlandValueBox:invalidateLayout()
 end
@@ -251,5 +268,4 @@ BaseMission.loadMapFinished = Utils.appendedFunction(BaseMission.loadMapFinished
 Mission00.onStartMission = Utils.appendedFunction(Mission00.onStartMission, startMission)
 SavegameSettingsEvent.readStream = Utils.appendedFunction(SavegameSettingsEvent.readStream, readStream)
 SavegameSettingsEvent.writeStream = Utils.appendedFunction(SavegameSettingsEvent.writeStream, writeStream)
-InGameMenuMapFrame.onClickMap = Utils.appendedFunction(InGameMenuMapFrame.onClickMap, onClickFarmland)
 

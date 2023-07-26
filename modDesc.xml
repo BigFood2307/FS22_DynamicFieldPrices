@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>BigFood2307</author>
-    <version>1.0.0.4</version>
+    <version>1.0.1.0</version>
 
     <title>
         <en>Dynamic Field Prices</en>
@@ -21,16 +21,11 @@ For more detailed information check out the project on github. (Google FS22_Dyna
 Thanks to the Additional Field Info mod for showing a way to display more information in the map screen.
 
 Changelog:
-- v1.0.0.1:
-* Moved display in map view to make it compatible with Additional field info.
-* Uses i18n for display
-- v1.0.0.2:
-* Adjusted mod description
-* New icon
-- v1.0.0.3
-* Moved display to the right slightly to adjust for longer words in german
-- v1.0.0.4
-* added pt/br translation
+- Older Changes are irrelevant because of new display style
+- v1.0.1.0
+* Changed price difference diplay to be more streamlined and work better with modmaps
+* Thanks to BetterContracts for the inspiration
+-
 ]]>
         </en>
 		<de>
@@ -45,16 +40,10 @@ Detailiertere Informationen sind im Github Projekt zu finden. (Google FS22_Dynam
 Danke an den Additional Field Infos Mod für das Aufzeigen einer Methode um weitere Informationen in der Karte anzuzeigen.
 
 Changelog:
-- v1.0.0.1:
-* Anzeige im Map View verschoben für Kompatibilität mit Additional field info.
-* Nutzt i18n in der Anzeige
-- v1.0.0.2:
-* Mod Beschreibung angepasst
-* Neues Icon
-- v1.0.0.3
-* Anzeige leicht nach rechts verschoben om längere deutsch Worte zu unterstützen.
-- v1.0.0.4
-* pt/br Übersetzung hinzugefügt
+- Alte Änderungen wegen neuer Anzeige irrelevant
+- v1.0.1.0
+* Preisunterschied wird nun direkt hinter dem Preis angezeigt. Bessere Kompatibilität mit Modmaps
+* Danke an BetterContracts für die Inspiration!
 ]]>
 		</de>
 	</description>

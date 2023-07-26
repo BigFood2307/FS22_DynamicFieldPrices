@@ -189,12 +189,17 @@ function loadedMission(mission, node)
     end
 end
 
+function loadedMap(mapNode, failedReason, arguments, callAsyncCallback, ...)
+	g_currentMission.inGameMenu.pageMapOverview.ingameMap.onClickMapCallback = g_currentMission.inGameMenu.pageMapOverview.onClickMap
+end
+
 function load(mission)
 	g_dynamicFieldPrices = DynamicFieldPrices:new(mission, g_messageCenter, g_farmlandManager)
 end
 
 function startMission(mission)
 	g_dynamicFieldPrices:onStartMission(mission)
+	print("Test 1234")
 end
 
 function readStream(e, streamId, connection)
@@ -205,73 +210,37 @@ function writeStream(e, streamId, connection)
     g_dynamicFieldPrices:onWriteStream(streamId, connection)
 end
 
-function DynamicFieldPrices:buildFarmlandsMapOverlay(selectedFarmland)
-    if selectedFarmland then
-		local baseprice = selectedFarmland.areaInHa*g_farmlandManager.pricePerHa*selectedFarmland.priceFactor
-		local mult = 1
-		if baseprice ~= 0 then
-			mult = selectedFarmland.price/baseprice
-		end		
-        local difference = string.format("%.1f %%", (mult-1)*100)
-		if mult >= 1 then
-			difference = "+" .. difference
-		end
-        self.selectedFarmlandDifference = difference
-    end
-end
 
--- temporary workaround, since adding directly to farmlandValueText only works on vanilla maps
-function DynamicFieldPrices:onFarmlandOverlayFinished(a, b, c, d)
-    if self.mapOverlayGenerator.selectedFarmlandDifference then
-		local compat_offset = 0
-		if self.areaText ~= nil then
-			compat_offset = 0.12
-		end
-		--self.farmlandValueText:setText(self.farmlandValueText:getText() .. " (" .. self.mapOverlayGenerator.selectedFarmlandDifference .. ")")
-		if self.diffText == nil then
-			local diffLabel = self.farmlandValueText:clone(self)
-			self.farmlandValueText.parent:addElement(diffLabel)
-			--diffLabel:setBold(false)
-			diffLabel:setText(g_i18n:getText("display_dfp_difference")..":")
-			diffLabel:applyProfile("ingameMenuMapMoneyLabel")
-			--diffLabel:setTextColor(1, 1, 1, 1)
-			self.diffLabel = diffLabel
-			local diffText = self.farmlandValueText:clone(self)
-			self.farmlandValueText.parent:addElement(diffText)
-			if string.sub(self.mapOverlayGenerator.selectedFarmlandDifference,1,1)=="+" then
-				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)
-			else			
-				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEUTRAL)
-			end
-			self.diffText = diffText
-			-- diffLabel:setTextColor(1, 1, 1, 1)
-			diffText:setPosition(0.08+compat_offset, 0.04)
-			diffLabel:setPosition(0.0+compat_offset, 0.04)
-			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
-		else
-			local diffText = self.diffText
-			local diffLabel = self.diffLabel
-			diffText:setVisible(false)
-			diffLabel:setVisible(false)
-			diffText:setPosition(0.08+compat_offset, 0.04)
-			diffLabel:setPosition(0.0+compat_offset, 0.04)
-			if string.sub(self.mapOverlayGenerator.selectedFarmlandDifference,1,1)=="+" then
-				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)
-			else			
-				diffText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEUTRAL)
-			end
-			diffText:setText(self.mapOverlayGenerator.selectedFarmlandDifference)
-			diffText:setVisible(true)
-			diffLabel:setVisible(true)
-		end
-	else
-		if self.diffText then
-			self:removeElement(self.diffText)
-		end
-		if self.diffLabel then
-			self:removeElement(self.diffLabel)
-		end
-    end
+function onClickFarmland(self, elem, X, Z)
+	-- appended to InGameMenuMapFrame:onClickMap()
+
+	if self.mode ~= InGameMenuMapFrame.MODE_FARMLANDS then return end 
+
+	local farmland = self.selectedFarmland		
+	
+	if farmland == nil or not farmland.showOnFarmlandsScreen
+		then return 
+	end
+	
+	local baseprice = farmland.areaInHa*g_farmlandManager.pricePerHa*farmland.priceFactor
+	local mult = 1
+	if baseprice ~= 0 then
+		mult = farmland.price/baseprice
+	end		
+	local difference = string.format("%.1f %%", (mult-1)*100)
+	if mult >= 1 then
+		difference = "+" .. difference
+	end
+	selectedFarmlandDifference = " (" .. difference .. ")"
+	
+	if mult >= 1 then
+		self.farmlandValueText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEGATIVE)
+	else			
+		self.farmlandValueText:applyProfile(InGameMenuMapFrame.PROFILE.MONEY_VALUE_NEUTRAL)
+	end	
+	self.farmlandValueText:setText(self.farmlandValueText:getText()..selectedFarmlandDifference)
+
+	self.farmlandValueBox:invalidateLayout()
 end
 
 addModEventListener(DynamicFieldPrices)
@@ -279,9 +248,9 @@ addModEventListener(DynamicFieldPrices)
 FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, saveToXMLFile)
 Mission00.load = Utils.appendedFunction(Mission00.load, load)
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, loadedMission)
+BaseMission.loadMapFinished = Utils.appendedFunction(BaseMission.loadMapFinished, loadedMap)
 Mission00.onStartMission = Utils.appendedFunction(Mission00.onStartMission, startMission)
 SavegameSettingsEvent.readStream = Utils.appendedFunction(SavegameSettingsEvent.readStream, readStream)
 SavegameSettingsEvent.writeStream = Utils.appendedFunction(SavegameSettingsEvent.writeStream, writeStream)
-MapOverlayGenerator.buildFarmlandsMapOverlay = Utils.appendedFunction(MapOverlayGenerator.buildFarmlandsMapOverlay, DynamicFieldPrices.buildFarmlandsMapOverlay)
-InGameMenuMapFrame.onFarmlandOverlayFinished = Utils.appendedFunction(InGameMenuMapFrame.onFarmlandOverlayFinished, DynamicFieldPrices.onFarmlandOverlayFinished)
+InGameMenuMapFrame.onClickMap = Utils.appendedFunction(InGameMenuMapFrame.onClickMap, onClickFarmland)
 

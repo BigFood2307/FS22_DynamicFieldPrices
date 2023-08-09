@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<locale>pl</locale>
+    <texts>
+        <text name="display_dfp_difference" text="Różnica"/>
+    </texts>
+</l10n>

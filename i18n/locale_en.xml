@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
 	<locale>en</locale>
+    <translationContributors>BigFood2307</translationContributors>
     <texts>
         <!-- game Settings menu -->
         <text name="DFP_Settings_Title"                     text="Dynamic Field Prices" />

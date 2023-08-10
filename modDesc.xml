@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="77">
     <author>BigFood2307</author>
-    <version>1.0.1.2</version>
+    <version>1.0.2.0</version>
 
     <title>
         <en>Dynamic Field Prices</en>
         <de>Dynamische Feld Preise</de>
+		<pt>Preços de campo dinâmicos</pt>
+		<br>Preços de campo dinâmicos</br>
 		<pl>Dynamiczne ceny pól</pl>
     </title>
 
@@ -19,8 +21,6 @@ Prices change once per day. The difference to the base price in percent is shown
 
 For more detailed information check out the project on github. (Google FS22_DynamicFieldPrices)
 
-Thanks to the Additional Field Info mod for showing a way to display more information in the map screen.
-
 Changelog:
 - Older Changes are irrelevant because of new display style
 - v1.0.1.0
@@ -32,6 +32,10 @@ Changelog:
 * Discounts are multiplicative (-10% DFP, -10% BC -> -19%)
 - v1.0.1.2
 * Fixed GUI bugs
+- v1.0.2.0
+* All settings can now be adjusted via the ingame menu
+* Some values are now saved differently in the xml. Old savegames are automatically converted.
+* PL, BR, PT Translations
 ]]>
         </en>
 		<de>
@@ -42,8 +46,6 @@ Eine Provision von 10% wird bei jedem Kauf/Verkauf angerechnet. Field Flipping w
 Preise ändern sich einmal am Tag. Der Unterschied zum Grundpreis in Prozent wird beim Landkauf angezeigt.
 
 Detailiertere Informationen sind im Github Projekt zu finden. (Google FS22_DynamicFieldPrices)
-
-Danke an den Additional Field Infos Mod für das Aufzeigen einer Methode um weitere Informationen in der Karte anzuzeigen.
 
 Changelog:
 - Alte Änderungen wegen neuer Anzeige irrelevant
@@ -56,8 +58,90 @@ Changelog:
 * Faktoren sind multiplikativ (-10% DFP, -10% BC -> -19%)
 - v1.0.1.2
 * GUI-Fehler behoben
+- v1.0.2.0
+* Alle Einstellungen können nun über das ingame Menü vorgenommen werden.
+* Einige Werte werden nun anders im xml gespeichert. Alte saves werden automatisch konvertiert.
+* PL, BR, PT Übersetzungen
 ]]>
 		</de>
+		<pt>
+			<![CDATA[
+Torna os preços dos terrenos mais interessantes. Pode fazer sentido procurar bons negócios em vez de comprar sempre o terreno mais próximo.
+Alguns NPCs são mais gananciosos que outros e a sua situação económica muda com o tempo, influenciando também os preços.
+É adicionado um extra de 10% quando se compra ou vende um campo. Isto limitará fortemente a troca de campos.
+Os preços mudam uma vez por dia. A diferença para o preço base em percentagem é mostrada quando se compra um terreno.
+
+Para informações mais detalhadas, consulte o projeto no github. (Google FS22_DynamicFieldPrices)
+
+Changelog:
+- As alterações mais antigas são irrelevantes devido ao novo estilo de apresentação
+- v1.0.1.0
+* Alterada a apresentação da diferença de preços para ser mais simples e funcionar melhor com os modmaps
+* Agradecimentos a BetterContracts pela inspiração
+- v1.0.1.1
+* Adicionada compatibilidade com o BetterContracts
+* Os factores de preço e de visualização foram fundidos
+* Os descontos são multiplicativos (-10% DFP, -10% BC -> -19%)
+- v1.0.1.2
+* Correção de erros do GUI
+- v1.0.2.0
+* As definições estão agora disponíveis nas definições do jogo
+* Os valores são guardados de forma diferente em xml, as gravações antigas são automaticamente convertidas
+* PL, BR, PT Traduções
+]]>
+		</pt>
+		<br>
+			<![CDATA[
+Torna os preços dos terrenos mais interessantes. Pode fazer sentido procurar bons negócios em vez de comprar sempre o terreno mais próximo.
+Alguns NPCs são mais gananciosos que outros e a sua situação económica muda com o tempo, influenciando também os preços.
+É adicionado um extra de 10% quando se compra ou vende um campo. Isto limitará fortemente a troca de campos.
+Os preços mudam uma vez por dia. A diferença para o preço base em percentagem é mostrada quando se compra um terreno.
+
+Para informações mais detalhadas, consulte o projeto no github. (Google FS22_DynamicFieldPrices)
+
+Changelog:
+- As alterações mais antigas são irrelevantes devido ao novo estilo de apresentação
+- v1.0.1.0
+* Alterada a apresentação da diferença de preços para ser mais simples e funcionar melhor com os modmaps
+* Agradecimentos a BetterContracts pela inspiração
+- v1.0.1.1
+* Adicionada compatibilidade com o BetterContracts
+* Os factores de preço e de visualização foram fundidos
+* Os descontos são multiplicativos (-10% DFP, -10% BC -> -19%)
+- v1.0.1.2
+* Correção de erros do GUI
+- v1.0.2.0
+* As definições estão agora disponíveis nas definições do jogo
+* Os valores são guardados de forma diferente em xml, as gravações antigas são automaticamente convertidas
+* PL, BR, PT Traduções
+]]>
+		</br>
+		<pl>		
+			<![CDATA[
+Sprawia, że ceny w terenie są bardziej interesujące. Warto rozglądać się za dobrymi okazjami, zamiast zawsze kupować najbliższą ziemię.
+Niektórzy NPC są bardziej chciwi niż inni, a ich sytuacja ekonomiczna zmienia się w czasie, wpływając również na ceny.
+Dodatkowe 10% jest dodawane przy zakupie lub sprzedaży pola. Mocno ograniczy to przerzucanie pól.
+Ceny zmieniają się raz dziennie. Różnica w stosunku do ceny bazowej w procentach jest wyświetlana przy zakupie ziemi.
+
+Więcej szczegółowych informacji można znaleźć w projekcie na githubie. (Google FS22_DynamicFieldPrices)
+
+Dziennik zmian:
+- Starsze zmiany są nieistotne ze względu na nowy styl wyświetlania
+- v1.0.1.0
+* Zmieniono wyświetlanie różnicy cen, aby było bardziej uproszczone i lepiej działało z modmapami
+* Podziękowania dla BetterContracts za inspirację
+- v1.0.1.1
+* Dodano kompatybilność z BetterContracts
+* Wyświetlacze i czynniki cenowe zostały połączone
+* Rabaty są multiplikatywne (-10% DFP, -10% BC -> -19%)
+- v1.0.1.2
+* Naprawiono błędy GUI
+- v1.0.2.0
+* Ustawienia są teraz dostępne w ustawieniach gry.
+* Wartości są zapisywane inaczej w xml, stare zapisy są automatycznie konwertowane
+* Tłumaczenia PL, BR, PT
+]]>		
+		</pl>
 	</description>
         
 	<l10n filenamePrefix="i18n/locale"/>

@@ -16,7 +16,7 @@ DFPSettings = {}
 DFPSettings.name = g_currentModName
 DFPSettings.modDir = g_currentModDirectory
 
-DFPSettings.debug = true
+DFPSettings.debug = false
 
 source(g_currentModDirectory .. "events/changeDFPCheckSettingsEvent.lua")
 source(g_currentModDirectory .. "events/changeDFPDecimalSettingsEvent.lua")

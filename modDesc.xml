@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="76">
+<modDesc descVersion="77">
     <author>BigFood2307</author>
-    <version>1.0.1.1</version>
+    <version>1.0.2.0</version>
 
     <title>
         <en>Dynamic Field Prices</en>
         <de>Dynamische Feld Preise</de>
+		<pl>Dynamiczne ceny pól</pl>
     </title>
 
     <description>
@@ -29,7 +30,8 @@ Changelog:
 * Added compatibility for BetterContracts
 * Displays and price factors are merged
 * Discounts are multiplicative (-10% DFP, -10% BC -> -19%)
--
+- v1.0.2.0
+* Fixed GUI bugs
 ]]>
         </en>
 		<de>
@@ -52,6 +54,8 @@ Changelog:
 * Kompatibiltät mit BetterContracts
 * Anzeige und Preisfaktor zusammengeführt
 * Faktoren sind multiplikativ (-10% DFP, -10% BC -> -19%)
+- v1.0.2.0
+* GUI-Fehler behoben
 ]]>
 		</de>
 	</description>

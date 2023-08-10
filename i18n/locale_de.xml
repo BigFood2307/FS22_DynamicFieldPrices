@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-    <locale>de</locale>
+	<locale>de</locale>
     <texts>
-        <text name="display_dfp_difference" text="Unterschied"/>
-	</texts>
+        <!-- game Settings menu -->
+        <text name="DFP_Settings_Title"                     text="Dynamische Feld Preise" />
+        <text name="DFP_ResetNPCs_Title"              		text="NPCs zurücksetzen" />
+        <text name="DFP_ResetNPCs_Tooltip"            		text="NPC Gier und wirtschaftliche Situation werden um Mitternacht neu ausgewürfelt. Diese Einstellung wird danach direkt wieder aus gestellt." />
+        <text name="DFP_MaxGreed_Title"              		text="Max Gier Faktor" />
+        <text name="DFP_MaxGreed_Tooltip"            		text="Maximaler Preis Faktor für die Gier eines NPCs. Änderungen führen sofort zu angepassten Preisen. Standard: 1.2 (+20%)" />
+        <text name="DFP_MinGreed_Title"              		text="Min Gier Faktor" />
+        <text name="DFP_MinGreed_Tooltip"            		text="Minimaler Preis Faktor für die Gier eines NPCs. Änderungen führen sofort zu angepassten Preisen. Standard: 0.8 (-20%)" />
+        <text name="DFP_MaxEco_Title"              			text="Max Wirtschaflichkeits Faktor" />
+        <text name="DFP_MaxEco_Tooltip"            			text="Maximaler Preis Faktor für die aktuelle wirtschaftliche Situation eines NPCs. Änderungen führen sofort zu angepassten Preisen. Standard: 1.6 (+60%)" />
+        <text name="DFP_MinEco_Title"              			text="Min Wirtschaflichkeits Faktor" />
+        <text name="DFP_MinEco_Tooltip"            			text="Minimaler Preis Faktor für die aktuelle wirtschaftliche Situation eines NPCs. Änderungen führen sofort zu angepassten Preisen. Standard: 0.6 (-40%)" />
+        <text name="DFP_Discourage_Title"              		text="Provision" />
+        <text name="DFP_Discourage_Tooltip"            		text="Anteil des Preises der bei jedem Kauf/Verkauf hinzugefügt/abgezogen wird. Ständiges Kaufen/Verkaufen wird dadurch uninteressant. Änderungen führen sofort zu angepassten Preisen. Standard: 0.1 (+10% / -10%)" />
+    </texts>
 </l10n>

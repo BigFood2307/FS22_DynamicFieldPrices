@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
 	<locale>en</locale>
+    <translationContributors>BigFood2307</translationContributors>
     <texts>
-        <text name="display_dfp_difference" text="Difference"/>
+        <!-- game Settings menu -->
+        <text name="DFP_Settings_Title"                     text="Dynamic Field Prices" />
+        <text name="DFP_ResetNPCs_Title"              		text="Reset NPCs" />
+        <text name="DFP_ResetNPCs_Tooltip"            		text="NPC greediness and economic situation will be rerolled at midnight. This setting automatically returns to off after." />
+        <text name="DFP_MaxGreed_Title"              		text="Max Greediness Factor" />
+        <text name="DFP_MaxGreed_Tooltip"            		text="Maximum price factor for an NPCs greediness value. Changes will immediately adjust prices. Default: 1.2 (+20%)" />
+        <text name="DFP_MinGreed_Title"              		text="Min Greediness Factor" />
+        <text name="DFP_MinGreed_Tooltip"            		text="Minimum price factor for an NPCs greediness value. Changes will immediately adjust prices. Default: 0.8 (-20%)" />
+        <text name="DFP_MaxEco_Title"              			text="Max Economic Factor" />
+        <text name="DFP_MaxEco_Tooltip"            			text="Maximum price factor for an NPCs economic situation. Changes will immediately adjust prices. Default: 1.6 (+60%)" />
+        <text name="DFP_MinEco_Title"              			text="Min Economic Factor" />
+        <text name="DFP_MinEco_Tooltip"            			text="Minimum price factor for an NPCs economic situation. Changes will immediately adjust prices. Default: 0.6 (-40%)" />
+        <text name="DFP_Discourage_Title"              		text="Discouragement Factor" />
+        <text name="DFP_Discourage_Tooltip"            		text="Part of price that is added/substracted when a field is bought/sold. Meant to discourage field flipping. Changes will immediately adjust prices. Default: 0.1 (+10% / -10%)" />
     </texts>
 </l10n>

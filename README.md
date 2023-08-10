@@ -17,13 +17,15 @@ You can also delete single entries here to only regenerate those NPCs.
 
 ###  Greediness
 
-The greediness factor is a number between 0.8 and 1.2 for each NPC. It will never change, unless the dynamicFieldPrices.xml file in the samvegame is deleted.  
-Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame or via the game settings menu
+The greediness factor is a number between 0.8 and 1.2 for each NPC. It will never change, unless the NPCs are reset. 
+Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame or via the game settings menu.
+In the xml the value per NPC is mapped to 0..1.
 
 ### Economic situation
 
 Each economic situation factor is a number between 0.6 and 1.6 for each NPC. It is randomly initiated once and will change daily by a small random amount.
-Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame or via the game settings menu
+Min and Max can be changed per save in the dynamicFieldPrices.xml file in your savegame or via the game settings menu.
+In the xml the value per NPC is mapped to 0..1.
 
 ### Buy/Sell discouragement
 

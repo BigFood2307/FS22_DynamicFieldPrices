@@ -155,12 +155,12 @@ function DynamicFieldPrices:onMissionLoadFromSavegame(xmlFile)
 
     xmlFile:iterate("dynamicFieldPrices.npcs.npc", function(_, key)
         local npc = {}
-
 		local id = xmlFile:getInt(key .. "#id")
-        npc.greediness = xmlFile:getFloat(key .. "#greediness")
-        npc.economicSit = xmlFile:getFloat(key .. "#economicSit")
-
-        self.npcs[id] = npc
+		if id ~= nil then
+			npc.greediness = xmlFile:getFloat(key .. "#greediness")
+			npc.economicSit = xmlFile:getFloat(key .. "#economicSit")
+			self.npcs[id] = npc
+		end
     end)
 end
 

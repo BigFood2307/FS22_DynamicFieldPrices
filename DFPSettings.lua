@@ -1,7 +1,14 @@
 --[[
+DynamicFieldPrices
+Setting File
 
-This is mostly using Achimobil and bravens Revamp mod Settings script.
-Thanks for allowing me to use it!
+Originally Part of Production Revamp
+Copyright (C) Achimobil, braeven, 2022, adjusted with permission by BigFood
+
+Important:.
+No changes are allowed to this script without permission from Achimobil AND Braeven.
+
+Es dürfen an diesem Script keine Veränderungen ohne Erlaubnis von Achimobil UND Braeven gemacht werden.
 
 ]]
 

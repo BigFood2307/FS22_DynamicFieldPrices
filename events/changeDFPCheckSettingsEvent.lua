@@ -4,9 +4,6 @@ Originally Part of Production Revamp
 Copyright (C) braeven & Achimobil 2022
 
 Author: Achimobil, adjusted with permission by BigFood
-
-Version: 1.1.0.0
-Date: 22.08.2022
 ]]
 
 ChangeDFPCheckSettingsEvent = {}

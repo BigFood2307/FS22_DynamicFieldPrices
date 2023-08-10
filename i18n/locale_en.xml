@@ -2,6 +2,9 @@
 <l10n>
 	<locale>en</locale>
     <texts>
-        <text name="display_dfp_difference" text="Difference"/>
+        <!-- game Settings menu -->
+        <text name="DFP_Settings_Title"                     text="Dynamic Field Prices" />
+        <text name="DFP_ResetNPCs_Title"              		text="Reset NPCs" />
+        <text name="DFP_ResetNPCs_Tooltip"            		text="NPC greediness and economic situation will be rerolled at midnight. This setting automatically returns to off after." />
     </texts>
 </l10n>

@@ -67,5 +67,6 @@ Changelog:
 
     <extraSourceFiles>
         <sourceFile filename="DynamicFieldPrices.lua"/>
+        <sourceFile filename="DFPSettings.lua"/>
     </extraSourceFiles>
 </modDesc>

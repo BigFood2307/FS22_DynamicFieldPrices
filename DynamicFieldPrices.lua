@@ -1,7 +1,7 @@
 local directory = g_currentModDirectory
 local modName = g_currentModName
 
-source(Utils.getFilename("DFPPricesChangedEvent.lua", directory))
+source(Utils.getFilename("DFPPricesChangedEvent.lua", directory .. "events/"))
 
 g_dynamicFieldPrices = nil
 
@@ -18,12 +18,6 @@ function DynamicFieldPrices:new(mission, messageCenter, farmlandManager)
     self.isClient = mission:getIsClient()
     self.isServer = mission:getIsServer()
 	
-	self.minGreed = 0.8
-	self.maxGreed = 1.2
-	self.minEco = 0.6
-	self.maxEco = 1.6
-	
-	self.discourage = 0.1
 	self.npcs = {}
 	self.messageCenter:subscribe(MessageType.DAY_CHANGED, self.onDayChanged, self)
 	farmlandManager:addStateChangeListener(self)	
@@ -74,12 +68,13 @@ function DynamicFieldPrices:calcPrice()
 		if self.npcs[npcIdx] == nil then
 			self:createRandomNPC(npcIdx)
 		end
-		newPrice = newPrice * self.npcs[npcIdx].greediness * self.npcs[npcIdx].economicSit
+		newPrice = newPrice * DFPSettings:getValue("Greed", self.npcs[npcIdx].greediness)
+		newPrice = newPrice * DFPSettings:getValue("Eco", self.npcs[npcIdx].economicSit)
 		local sellFactor = 1
 		if field.isOwned then
-			sellFactor = sellFactor - self.discourage
+			sellFactor = sellFactor - DFPSettings:getDiscourage()
 		else
-			sellFactor = sellFactor + self.discourage
+			sellFactor = sellFactor + DFPSettings:getDiscourage()
 		end
 		newPrice = newPrice*sellFactor
 		field.price = newPrice
@@ -91,21 +86,27 @@ end
 
 function DynamicFieldPrices:createRandomNPC(i)
 	npc = {
-		greediness = math.random()*(self.maxGreed-self.minGreed) + self.minGreed,
-		economicSit = math.random()*(self.maxEco-self.minEco) + self.minEco
+		greediness = math.random(),
+		economicSit = math.random()
 	}
 	self.npcs[i] = npc
 end
 
 function DynamicFieldPrices:randomizeNPCs()
 	for nidx, fnpc in pairs(self.npcs) do
-		fnpc.economicSit = fnpc.economicSit + (math.random()-0.5)*0.1
-		fnpc.economicSit = math.max(math.min(fnpc.economicSit, self.maxEco), self.minEco)
+		fnpc.economicSit = fnpc.economicSit + (math.random()-0.5)*0.2
+		fnpc.economicSit = math.max(math.min(fnpc.economicSit, 1), 0)
 	end
 end
 
 function DynamicFieldPrices:onDayChanged(day)
 	if self.isServer then
+		if DFPSettings.current.ResetNPCs then
+			self.npcs = {}
+			
+			DFPSettings.current.ResetNPCs = false			
+			g_server:broadcastEvent(ChangeDFPCheckSettingsEvent.new("ResetNPCs", false), false)
+		end
 		self:randomizeNPCs()
 		self:calcPrice()
 	end
@@ -124,14 +125,6 @@ function DynamicFieldPrices:onStartMission(mission)
 end
 
 function DynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
-    xmlFile:setInt("dynamicFieldPrices#version", 1)
-	
-	xmlFile:setFloat("dynamicFieldPrices.greediness#min", self.minGreed)
-	xmlFile:setFloat("dynamicFieldPrices.greediness#max", self.maxGreed)
-	xmlFile:setFloat("dynamicFieldPrices.economicSit#min", self.minEco)
-	xmlFile:setFloat("dynamicFieldPrices.economicSit#max", self.maxEco)
-	
-	xmlFile:setFloat("dynamicFieldPrices.discourage#value", self.discourage)
 
     if self.npcs ~= nil then
         for i, snpc in pairs(self.npcs) do
@@ -144,49 +137,24 @@ function DynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
     end
 end
 
-function DynamicFieldPrices:onMissionLoadFromSavegame(xmlFile)
-	
-	self.minGreed = xmlFile:getFloat("dynamicFieldPrices.greediness#min")
-	self.maxGreed = xmlFile:getFloat("dynamicFieldPrices.greediness#max")
-	self.minEco = xmlFile:getFloat("dynamicFieldPrices.economicSit#min")
-	self.maxEco = xmlFile:getFloat("dynamicFieldPrices.economicSit#max")
-	
-	self.discourage = xmlFile:getFloat("dynamicFieldPrices.discourage#value")
+function DynamicFieldPrices:onMissionLoadFromSavegame(xmlFile, xmlVersion)
 
     xmlFile:iterate("dynamicFieldPrices.npcs.npc", function(_, key)
         local npc = {}
-
 		local id = xmlFile:getInt(key .. "#id")
-        npc.greediness = xmlFile:getFloat(key .. "#greediness")
-        npc.economicSit = xmlFile:getFloat(key .. "#economicSit")
-
-        self.npcs[id] = npc
-    end)
-end
-
-function saveToXMLFile(missionInfo)
-    if missionInfo.isValid then
-        local xmlFile = XMLFile.create("DynamicFieldPricesXML", missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml", "dynamicFieldPrices")
-        if xmlFile ~= nil then
-            g_dynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
-            xmlFile:save()
-            xmlFile:delete()
-        end
-    end
-end
-
-function loadedMission(mission, node)
-	if mission.missionInfo.savegameDirectory ~= nil and fileExists(mission.missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml") then
-		local xmlFile = XMLFile.load("DynamicFieldPricesXML", mission.missionInfo.savegameDirectory .. "/dynamicFieldPrices.xml")
-		if xmlFile ~= nil then
-			g_dynamicFieldPrices:onMissionLoadFromSavegame(xmlFile)
-			xmlFile:delete()
+		if id ~= nil then
+			npc.greediness = xmlFile:getFloat(key .. "#greediness")
+			npc.economicSit = xmlFile:getFloat(key .. "#economicSit")
+			
+			-- Add support for older versions -> convert values			
+			if xmlVersion == 1 then
+				npc.greediness = DFPSettings:getRatio("Greed", npc.greediness)
+				npc.economicSit = DFPSettings:getRatio("Eco", npc.economicSit)
+			end
+			
+			self.npcs[id] = npc
 		end
-	end
-
-    if mission.cancelLoading then
-        return
-    end
+    end)
 end
 
 function loadedMap(mapNode, failedReason, arguments, callAsyncCallback, ...)
@@ -261,9 +229,7 @@ end
 
 addModEventListener(DynamicFieldPrices)
 
-FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, saveToXMLFile)
 Mission00.load = Utils.appendedFunction(Mission00.load, load)
-Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, loadedMission)
 BaseMission.loadMapFinished = Utils.appendedFunction(BaseMission.loadMapFinished, loadedMap)
 Mission00.onStartMission = Utils.appendedFunction(Mission00.onStartMission, startMission)
 SavegameSettingsEvent.readStream = Utils.appendedFunction(SavegameSettingsEvent.readStream, readStream)

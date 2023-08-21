@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
 	<locale>pl</locale>
-    <translationContributors>BigFood2307, KITT3000</translationContributors>
+    <translationContributors>BigFood2307, Ziuta</translationContributors>
     <texts>
         <!-- game Settings menu -->
         <text name="DFP_Settings_Title"                     text="Dynamiczne ceny pól" />
-        <text name="DFP_ResetNPCs_Title"              		text="Resetowanie NPC" />
+        <text name="DFP_ResetNPCs_Title"              		text="Zresetuj NPC" />
         <text name="DFP_ResetNPCs_Tooltip"            		text="Chciwość NPC i sytuacja ekonomiczna zostaną ponownie przeliczone o północy. Ustawienie to automatycznie powraca do stanu wyłączonego." />
         <text name="DFP_MaxGreed_Title"              		text="Maksymalny współczynnik chciwości" />
         <text name="DFP_MaxGreed_Tooltip"            		text="Maksymalny współczynnik ceny dla wartości chciwości NPC. Zmiany natychmiast dostosują ceny. Domyślnie: 1.2 (+20%)" />
@@ -15,7 +15,7 @@
         <text name="DFP_MaxEco_Tooltip"            			text="Maksymalny współczynnik ceny dla sytuacji ekonomicznej NPC. Zmiany natychmiast dostosują ceny. Domyślnie: 1.6 (+60%)" />
         <text name="DFP_MinEco_Title"              			text="Minimalny współczynnik ekonomiczny" />
         <text name="DFP_MinEco_Tooltip"            			text="Minimalny współczynnik ceny dla sytuacji ekonomicznej NPC. Zmiany natychmiast dostosują ceny. Domyślnie: 0.6 (-40%)" />
-        <text name="DFP_Discourage_Title"              		text="Czynnik zniechęcenia" />
-        <text name="DFP_Discourage_Tooltip"            		text="Część ceny, która jest dodawana/odejmowana, gdy pole jest kupowane/sprzedawane. Ma na celu zniechęcenie do przerzucania pól. Zmiany natychmiast dostosują ceny. Domyślnie: 0.1 (+10% / -10%)" />
+        <text name="DFP_Discourage_Title"              		text="Współczynnik zniechęcenia" />
+        <text name="DFP_Discourage_Tooltip"            		text="Część ceny, która jest dodawana/odejmowana, gdy pole jest kupowane/sprzedawane. Ma na celu zniechęcenie do chwilowego zakupu pól. Zmiany natychmiast dostosują ceny. Domyślnie: 0.1 (+10% / -10%)" />
     </texts>
 </l10n>

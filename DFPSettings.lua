@@ -31,6 +31,7 @@ function DFPSettings.init()
 	DFPSettings.current.MaxEco = 1.6	
 	DFPSettings.current.Discourage = 0.1
 	DFPSettings.current.ResetNPCs = false
+	DFPSettings.current.ShowPriceModifier = true
 
 	-- listen zum speichern der elemente für das wieder füllen bei änderungen von anderen
 	DFPSettings.checkElements = {}
@@ -61,6 +62,7 @@ function DFPSettings.GameSettingsFrame_onFrameOpen(self)
 		DFPSettings:AddGameSettingDecimalNonNegativeElement(self, target, "MaxEco", DFPSettings.current.MaxEco)
 		DFPSettings:AddGameSettingDecimalNonNegativeElement(self, target, "Discourage", DFPSettings.current.Discourage)
 		DFPSettings:AddGameSettingCheckElement(self, target, "ResetNPCs", DFPSettings.current.ResetNPCs)
+		DFPSettings:AddGameSettingCheckElement(self, target, "ShowPriceModifier", DFPSettings.current.ShowPriceModifier)
 
 		self.dfpGameSettings_initialized = true
 

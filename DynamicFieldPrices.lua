@@ -189,7 +189,11 @@ function onClickFarmland(self, elem, X, Z)
 	if farmland == nil or not farmland.showOnFarmlandsScreen
 		then return 
 	end
-			
+		
+	if DFPSettings.current.ShowPriceModifier == false
+		then return
+	end
+	
 	local bcFactor = 1
 	
 	if g_modIsLoaded["FS22_BetterContracts"] then

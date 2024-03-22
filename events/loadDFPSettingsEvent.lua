@@ -32,6 +32,7 @@ function LoadDFPSettingsEvent:readStream(streamId, connection)
 		self.settings.MaxEco = streamReadFloat32(streamId)
 		self.settings.Discourage = streamReadFloat32(streamId)
 		self.settings.ResetNPCs = streamReadBool(streamId)
+		self.settings.ShowPriceModifier = streamReadBool(streamId)
 		
 		self:run(connection)
 	end
@@ -47,6 +48,7 @@ function LoadDFPSettingsEvent:writeStream(streamId, connection)
 	streamWriteFloat32(streamId, self.settings.MaxEco)
 	streamWriteFloat32(streamId, self.settings.Discourage)
 	streamWriteBool(streamId, self.settings.ResetNPCs)
+	streamWriteBool(streamId, self.settings.ShowPriceModifier)
 
 end
 

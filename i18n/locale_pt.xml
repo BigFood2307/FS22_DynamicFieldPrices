@@ -7,6 +7,8 @@
         <text name="DFP_Settings_Title"                     text="Preços de campo dinâmicos" />
         <text name="DFP_ResetNPCs_Title"              		text="Repor NPCs" />
         <text name="DFP_ResetNPCs_Tooltip"            		text="A ganância dos NPCs e a situação económica serão relançadas à meia-noite. Esta definição volta automaticamente a estar desligada depois." />
+        <text name="DFP_ShowPriceModifier_Title"            text="Exibir modificador de preço" />
+        <text name="DFP_ShowPriceModifier_Tooltip"          text="Ao comprar ou vender, os campos mostram o valor do modificador de preço atual" />
         <text name="DFP_MaxGreed_Title"              		text="Fator de ganância máximo" />
         <text name="DFP_MaxGreed_Tooltip"            		text="Fator de preço máximo para o valor de ganância de um NPC. Alterações irão ajustar imediatamente os preços. Por defeito: 1.2 (+20%)" />
         <text name="DFP_MinGreed_Title"              		text="Fator de ganância mínimo" />

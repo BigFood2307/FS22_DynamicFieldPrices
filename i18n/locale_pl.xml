@@ -7,6 +7,8 @@
         <text name="DFP_Settings_Title"                     text="Dynamiczne ceny pól" />
         <text name="DFP_ResetNPCs_Title"              		text="Zresetuj NPC" />
         <text name="DFP_ResetNPCs_Tooltip"            		text="Chciwość NPC i sytuacja ekonomiczna zostaną ponownie przeliczone o północy. Ustawienie to automatycznie powraca do stanu wyłączonego." />
+        <text name="DFP_ShowPriceModifier_Title"            text="Wyświetl modyfikator ceny" />
+        <text name="DFP_ShowPriceModifier_Tooltip"          text="Przy zakupie lub sprzedaży pola pokazują aktualną kwotę modyfikatora ceny" />
         <text name="DFP_MaxGreed_Title"              		text="Maksymalny współczynnik chciwości" />
         <text name="DFP_MaxGreed_Tooltip"            		text="Maksymalny współczynnik ceny dla wartości chciwości NPC. Zmiany natychmiast dostosują ceny. Domyślnie: 1.2 (+20%)" />
         <text name="DFP_MinGreed_Title"              		text="Minimalny współczynnik chciwości" />

@@ -7,6 +7,8 @@
         <text name="DFP_Settings_Title"                     text="Dynamic Field Prices" />
         <text name="DFP_ResetNPCs_Title"              		text="Reset NPCs" />
         <text name="DFP_ResetNPCs_Tooltip"            		text="NPC greediness and economic situation will be rerolled at midnight. This setting automatically returns to off after." />
+        <text name="DFP_ShowPriceModifier_Title"            text="Display Price Modifier" />
+        <text name="DFP_ShowPriceModifier_Tooltip"          text="When buying or selling fields show the current price modifier amount" />
         <text name="DFP_MaxGreed_Title"              		text="Max Greediness Factor" />
         <text name="DFP_MaxGreed_Tooltip"            		text="Maximum price factor for an NPCs greediness value. Changes will immediately adjust prices. Default: 1.2 (+20%)" />
         <text name="DFP_MinGreed_Title"              		text="Min Greediness Factor" />

@@ -31,6 +31,7 @@ function DFPSettings.init()
 	DFPSettings.current.MaxEco = 1.6	
 	DFPSettings.current.Discourage = 0.1
 	DFPSettings.current.ResetNPCs = false
+	DFPSettings.current.ShowPriceModifier = true
 
 	-- listen zum speichern der elemente für das wieder füllen bei änderungen von anderen
 	DFPSettings.checkElements = {}
@@ -61,6 +62,7 @@ function DFPSettings.GameSettingsFrame_onFrameOpen(self)
 		DFPSettings:AddGameSettingDecimalNonNegativeElement(self, target, "MaxEco", DFPSettings.current.MaxEco)
 		DFPSettings:AddGameSettingDecimalNonNegativeElement(self, target, "Discourage", DFPSettings.current.Discourage)
 		DFPSettings:AddGameSettingCheckElement(self, target, "ResetNPCs", DFPSettings.current.ResetNPCs)
+		DFPSettings:AddGameSettingCheckElement(self, target, "ShowPriceModifier", DFPSettings.current.ShowPriceModifier)
 
 		self.dfpGameSettings_initialized = true
 
@@ -175,9 +177,9 @@ function DFPSettings.saveSettingsXML(missionInfo)
 		xmlFile:setFloat("dynamicFieldPrices.greediness#max", DFPSettings.current.MaxGreed)
 		xmlFile:setFloat("dynamicFieldPrices.economicSit#min", DFPSettings.current.MinEco)
 		xmlFile:setFloat("dynamicFieldPrices.economicSit#max", DFPSettings.current.MaxEco)
-
 		xmlFile:setFloat("dynamicFieldPrices.discourage#value", DFPSettings.current.Discourage)
-		
+		xmlFile:setBool("dynamicFieldPrices.priceModifier", DFPSettings.current.ShowPriceModifier)
+
 		g_dynamicFieldPrices:onMissionSaveToSavegame(xmlFile)
 		
 		xmlFile:save()
@@ -195,7 +197,8 @@ function DFPSettings.loadSettingsXML(mission, node)
 				DFPSettings.loadSettingsFloat(xmlFile, "greediness#max", "MaxGreed")
 				DFPSettings.loadSettingsFloat(xmlFile, "economicSit#min", "MinEco")
 				DFPSettings.loadSettingsFloat(xmlFile, "economicSit#max", "MaxEco")
-				DFPSettings.loadSettingsFloat(xmlFile, "discourage#value", "Discourage")			
+				DFPSettings.loadSettingsFloat(xmlFile, "discourage#value", "Discourage")
+				DFPSettings.loadSettingsBool(xmlFile, "priceModifier", "ShowPriceModifier")			
 				
 				g_dynamicFieldPrices:onMissionLoadFromSavegame(xmlFile, version)
 				
@@ -207,6 +210,15 @@ end
 
 function DFPSettings.loadSettingsFloat(xmlFile, xmlKey, settingsId)
 	local value = xmlFile:getFloat("dynamicFieldPrices." .. xmlKey)
+	if value == nil then
+		return
+	end
+	DFPSettings.current[settingsId] = value
+	DFPSettings:print("Dynamic Field Prices: Loaded '" .. settingsId .. "': " .. tostring(DFPSettings.current[settingsId]))
+end
+
+function DFPSettings.loadSettingsBool(xmlFile, xmlKey, settingsId)
+	local value = xmlFile:getBool("dynamicFieldPrices." .. xmlKey)
 	if value == nil then
 		return
 	end
